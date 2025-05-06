@@ -15,7 +15,6 @@ export default function LoginPage() {
                 email: email,
                 password: password
             })
-            //alert("Login Successful")
             toast.success("Login Successful")
             console.log(response.data)
             localStorage.setItem("token", response.data.token)
@@ -28,12 +27,8 @@ export default function LoginPage() {
 
 
         } catch (e) {
-            //alert(e.response.data.message)
             toast.error(e.response.data.message)
         }
-
-
-
 
     }
 
@@ -54,8 +49,10 @@ export default function LoginPage() {
                         }
 
                         value={email}
+                        placeholder="Email"
 
-                        className="w-[300px] h-[50px] border border-[#c3efe9] rounded-[20px] my-[20px]" />
+
+                        className="w-[300px] h-[50px] border border-[#c3efe9] rounded-[20px] my-[20px] px-4" />
                     <input
                         onChange={
                             (e) => {
@@ -63,7 +60,9 @@ export default function LoginPage() {
                             }
                         }
                         value={password}
-                        type="password" className="w-[300px] h-[50px] border border-[#c3efe9] rounded-[20px] mb-[20px]" />
+                        placeholder="Password"
+
+                        type="password" className="w-[300px] h-[50px] border border-[#c3efe9] rounded-[20px] mb-[20px] px-4" />
                     <button onClick={handleLogin} className="w-[300px] cursor-pointer h-[50px] bg-[#c3efe9] rounded-[20px] my-[20px] text-[20px] font-bold text-white">Login</button>
 
                 </div>
