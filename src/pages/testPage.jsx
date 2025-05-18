@@ -1,49 +1,36 @@
 import { useState } from "react"
+import mediaUpload from "../utils/mediaupload"
+import toast from "react-hot-toast"
+
 
 export default function TestPage() {
+    const [image, setImage] = useState(null)
 
-    const [count, setCount] = useState(0)
-    const [status, setStatus] = useState("Status")
+    function fileUpload() {
+
+        mediaUpload(image).then(
+            (res) => {
+                console.log(res)
+                toast.success("Image uploaded successfully!");
+            }
+        ).catch(
+            (res) => {
+                console.log(res)
+                toast.error("Failed to upload image.");
+            }
+        )
+        //const url = await mediaUpload(image)
+    }
 
     return (
         <div className="w-full h-screen  flex justify-center items-center flex-col">
-            <div className="w-[450px] h-[250px] shadow flex justify-center items-center">
-                <button onClick={() => {
-                    setCount(count - 1)
-                }} className="bg-blue-600 text-white font-bold text-center w-[100px] h-[40px] text-[20px] cursor-pointer">
-                    -
-                </button>
+            <input type="file" className="file-input file-input-bordered w-full max-w-xs"
+                onChange={(e) => {
 
-                <span className="text-[40px] font-bold text-center w-[100px] h-[40px] mx-[10px] flex justify-center items-center">
-                    {count}
-                </span>
+                    setImage(e.target.files[0])
 
-                <button onClick={() => {
-                    setCount(count + 1)
-                }} className="bg-blue-600 text-white font-bold text-center w-[100px] h-[40px] text-[20px] cursor-pointer">
-                    +
-                </button>
-            </div>
-            <div className="w-[450px] h-[250px] shadow flex flex-col justify-center items-center">
-
-                <span className="text-[40px] font-bold text-center w-[100px] h-[40px] mx-[10px] flex justify-center items-center">
-                    {status}
-                </span>
-                <div >
-                    <button className="bg-blue-600 text-white font-bold text-center w-[100px] h-[40px] text-[20px] cursor-pointer m-[20px]"
-                        onClick={() => {
-                            setStatus("Passed")
-                        }}>
-                        Passed
-                    </button>
-                    <button className="bg-blue-600 text-white font-bold text-center w-[100px] h-[40px] text-[20px] cursor-pointer m-20px"
-                        onClick={() => {
-                            setStatus("Failed")
-                        }}>
-                        Failed
-                    </button>
-                </div>
-            </div>
+                }} />
+            <button onClick={fileUpload} className="bg-green-500 text-white font-bold py-2 px-4 rounded">Upload</button>
         </div>
     )
 }
