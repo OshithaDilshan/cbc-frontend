@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import mediaUpload from "../../utils/mediaUpload";
+import mediaUpload from "../../utils/mediaupload";
 import axios from "axios";
 
 export default function EditProductPage() {

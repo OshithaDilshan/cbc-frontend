@@ -1,9 +1,9 @@
 import { createClient } from "@supabase/supabase-js"
 
-const url = "https://gpfvqdogirmcmayxfjhn.supabase.co"
-const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdwZnZxZG9naXJtY21heXhmamhuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY4NjUxMDAsImV4cCI6MjA2MjQ0MTEwMH0.E-xAIVBYI6PAs78SieyiBmadOVH9QOJgDl3lNWpjd5w"
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
 
-const supabase = createClient(url, key)
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 export default function mediaUpload(file) {
 
