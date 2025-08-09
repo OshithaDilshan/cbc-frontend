@@ -58,7 +58,19 @@ export default function Header() {
                             <a href="/products" className="text-[20px] font-bold mx-2 my-4">Products</a>
                             <a href="/about" className="text-[20px] font-bold mx-2 my-4">About</a>
                             <a href="/contact" className="text-[20px] font-bold mx-2 my-4">Contact</a>
-                            
+                            {/* Add Logout Button here */}
+                            {token != null ? (
+                                <button
+                                    className="text-[20px] font-bold mx-2 my-4"
+                                    onClick={() => {
+                                        localStorage.removeItem("token");
+                                        localStorage.removeItem("user");
+                                        window.location.href = "/";
+                                    }}
+                                >
+                                    Logout
+                                </button>
+                            ) : null}
                             <a href="/cart" className="text-[20px] font-bold mx-2 my-4">
                                 <BsCart3 />
                             </a>
